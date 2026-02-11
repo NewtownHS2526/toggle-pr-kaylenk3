@@ -1,7 +1,4 @@
-body {
-  background-color: #eeeeee;
-  height: 100vh;
-}
+
 .navbar{
   background-color: #eeeeee;
 }
@@ -43,4 +40,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+.custom-class{
+ border-color: cadetblue;
+ font-style: italic;
+ color: aqua;
 }
