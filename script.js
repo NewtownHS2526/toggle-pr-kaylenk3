@@ -10,12 +10,19 @@ const inboxMessage = document.querySelector("#inbox-message");
 const unreadBtn = document.querySelector("#mark-button");
 const closeBtn = document.querySelector("#close");
 const targetElement = document.querySelector("#sender");
+const checkbox = document.querySelector("#checkbox");
+const actionButtons = document.querySelector("#action-buttons");
+const deleteBtn = document.querySelector("#Delete");
+const readBtn = document.querySelector("#read");
+const darkModeBtn = document.querySelector("#dark-mode");
+const body = document.querySelector("body");
+
 
 const changeFontColor = () => {
-    heading.classList.add("blue-text");
+    heading.classList.toggle("blue-text");
 };
 const changeSubtitleColor = () => {
-    subtitle.classList.add("blue-text");
+    subtitle.classList.toggle("blue-text");
 };
 const showReply = () => {
     replyMessage.classList.remove("hidden");
@@ -43,6 +50,28 @@ const toggleCustomClass = () => {
         targetElement.classList.add("my-custom-class");
     }
 };
+const handleCheckbox = () => {
+    inbox.classList.toggle("is-selected");
+    actionButtons.classList.toggle("hidden");
+};
+const handleDelete = () => {
+    inbox.classList.toggle("hidden");
+
+    if (deleteBtn.innerHTML === "Delete Message(s)") {
+        deleteBtn.innerHTML = "Undo Deletion";
+    } else {
+        deleteBtn.innerHTML = "Delete Message(s)";
+    }
+};
+const markRead = () => {
+    unreadBtn.classList.remove("hidden");
+    inbox.classList.remove("is-selected");
+    inbox.classList.add("is-read");
+    checkbox.checked = false;
+};
+const toggleDarkMode = () => {
+    body.classList.toggle("dark-mode");
+};
 
 heading.addEventListener("click", changeFontColor);
 subtitle.addEventListener("click", changeSubtitleColor);
@@ -53,3 +82,7 @@ openBtn.addEventListener("click", openMessage);
 closeBtn.addEventListener("click", closeMessage);
 unreadBtn.addEventListener("click", markUnread);
 subtitle.addEventListener("click", toggleCustomClass);
+checkbox.addEventListener("click", handleCheckbox);
+deleteBtn.addEventListener("click", handleDelete);
+readBtn.addEventListener("click", markRead);
+darkModeBtn.addEventListener("click", toggleDarkMode);
